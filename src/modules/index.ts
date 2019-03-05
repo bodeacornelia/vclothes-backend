@@ -1,8 +1,8 @@
 'use strict'
-import AuthProvider from '../src/packages/core/auth/AuthProvider';
-import auth from './modules/auth';
+import AuthProvider from '../packages/core/auth/AuthProvider';
+import auth from './auth';
 
-module.exports.init = init;
+export default init;
 
 const envConfig = (env) => ({
   apiUrl: env.API_BASE
