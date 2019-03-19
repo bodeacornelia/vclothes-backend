@@ -1,10 +1,10 @@
 'use strict'
 
-import { createConnection } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import Controller from '../../../system/Controller';
 import Users from "../../../entity/Users";
 import getConnection from '../../../../MysqlConnection';
+import Role from '../../../entity/Role';
 
 
 class RegisterController extends Controller {
@@ -26,36 +26,23 @@ class RegisterController extends Controller {
           newUser.password = hash
           const conn = getConnection();
           conn.then(async connection => {
-            console.log(conn);
+            let roleRepository = connection.getRepository(Role);
+            let adminRole = await roleRepository.findOne({ name: 'admin' });
+
             const user = new Users();
             user.phone = newUser.phone;
             user.password = newUser.password;
             user.first_name = newUser.first_name;
             user.last_name = newUser.last_name;
             user.email = newUser.email;
-            user.role_id = newUser.role_id;
-            let usersRepository = connection.getRepository(Users);
-            await usersRepository.save(user);
-            const allUsers = await usersRepository.find();
-            res.json(allUsers);
-          })
-            // let usersRepository = connection.getRepository(Users);
-            // await usersRepository.save(user);
+            user.role = adminRole;
 
-            // createConnection().then(async connection => {
-            //   const user = new Users();
-            //   user.phone = newUser.phone;
-            //   user.password = newUser.password;
-            //   user.first_name = newUser.first_name;
-            //   user.last_name = newUser.last_name;
-            //   user.email = newUser.email;
-            //   user.role_id = newUser.role_id;
-            //   let usersRepository = connection.getRepository(Users);
-            //   await usersRepository.save(user);
-            //   const allUsers = await usersRepository.find();
-            //   res.json(allUsers);
-            // })
-            .catch(error => console.log(error));
+            let userRepository = connection.getRepository(Users);
+            await userRepository.save(user);
+
+            const allUsers = await userRepository.find();
+            res.json(allUsers);
+          }).catch(error => console.log(error));
         };
       });
     }

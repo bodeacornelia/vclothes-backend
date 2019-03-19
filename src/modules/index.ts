@@ -1,6 +1,7 @@
 'use strict'
 import AuthProvider from '../packages/core/auth/AuthProvider';
 import auth from './auth';
+import user from './user'
 
 export default init;
 
@@ -21,6 +22,7 @@ function init(app) {
   app.set('auth', authSystem);
 
   auth(app);
+  user(app);
 
   return app;
 }

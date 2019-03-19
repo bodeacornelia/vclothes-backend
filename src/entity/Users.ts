@@ -1,4 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from "typeorm";
+import Role from './Role';
+import Appointment from "./Appointment";
 
 @Entity()
 export default class Users extends BaseEntity {
@@ -21,6 +23,10 @@ export default class Users extends BaseEntity {
     @Column()
     password: string;
 
-    @Column()
-    role_id: number;
+    @OneToMany(type => Appointment, appointment => appointment.user)
+    appointments: Appointment[];
+
+    @ManyToOne(type => Role, role => role.users)
+    role: Role;
+
 }
