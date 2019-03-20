@@ -1,8 +1,7 @@
 'use strict'
 
 import Controller from '../../../system/Controller';
-import getConnection from '../../../../MysqlConnection';
-import Users from '../../../entity/Users';
+import UserService from '../service/UserService';
 
 class UserDetailsController extends Controller {
   constructor() {
@@ -10,15 +9,11 @@ class UserDetailsController extends Controller {
   }
 
   getUserDetails() {
-    return function (req, res) {
-      const conn = getConnection();
-      conn.then(async connection => {
-        let usersRepository = connection.getRepository(Users);
-        const user = await usersRepository.findOne(req.params.userId);
-        res.send(user);
-      }).catch(error => res.send(error))
+    return async function (req, res) {
+      const user = await UserService.getUserById(req.params.userId);
+      res.send(user);
     };
-  }
+  };
 }
 
 export default UserDetailsController;

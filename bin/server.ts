@@ -3,6 +3,8 @@ import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import modules from '../src/modules';
+import { connection } from '../MysqlConnection';
+connection();
 
 const app = express();
 dotenv.config();

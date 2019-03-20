@@ -14,11 +14,11 @@ export default class Photo extends BaseEntity {
     @Column()
     description: string;
 
-    @Column()
+    @Column({ type: "date" })
     createdAt: string;
 
     @Column()
-    phone_path: string;
+    photo_path: string;
 
     @ManyToOne(type => Category, category => category.photos)
     category: Category;

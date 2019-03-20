@@ -3,7 +3,7 @@ import Role from './Role';
 import Appointment from "./Appointment";
 
 @Entity()
-export default class Users extends BaseEntity {
+export default class User extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;

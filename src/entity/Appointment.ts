@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from "typeorm";
 import Category from "./Category";
-import Users from "./Users";
+import User from "./User";
 import Status from "./Status";
 
 @Entity()
@@ -18,8 +18,8 @@ export default class Appointment extends BaseEntity {
     @ManyToOne(type => Category, category => category.photos)
     category: Category;
 
-    @ManyToOne(type => Users, user => user.appointments)
-    user: Users;
+    @ManyToOne(type => User, user => user.appointments)
+    user: User;
 
     @ManyToOne(type => Status, status => status.appointments)
     status: Status;

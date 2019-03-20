@@ -1,24 +1,19 @@
 'use strict'
 
 import Controller from '../../../system/Controller';
-import getConnection from '../../../../MysqlConnection';
-import Users from '../../../entity/Users';
+import UserService from '../service/UserService';
 
-class ListUsersController extends Controller {
+class UserListController extends Controller {
   constructor() {
     super();
   }
 
   listAllUsers() {
-    return function (req, res) {
-      const conn = getConnection();
-      conn.then(async connection => {
-        let usersRepository = connection.getRepository(Users);
-        const allUsers = await usersRepository.find();
-        res.send(allUsers);
-      }).catch(error => res.send(error))
+    return async function (req, res) {
+      const userList = await UserService.getAllUsers();
+      res.send(userList);
     };
   }
 }
 
-export default ListUsersController;
+export default UserListController;
