@@ -1,6 +1,5 @@
-import User from "../../../entity/User";
-import Role from "../../../entity/Role";
 import { getRepository } from "typeorm";
+import { Role, User } from "../../../entity";
 
 class UserService {
   async createUser(newUser) {

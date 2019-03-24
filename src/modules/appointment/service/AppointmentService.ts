@@ -1,8 +1,5 @@
 import { getRepository } from "typeorm";
-import Category from "../../../entity/Category";
-import User from "../../../entity/User";
-import Appointment from "../../../entity/Appointment";
-import Status from "../../../entity/Status";
+import { Status, Appointment, User, Category } from "../../../entity";
 
 class AppointmentService {
   async createAppointment(newAppointment) {

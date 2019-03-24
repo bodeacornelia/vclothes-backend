@@ -1,7 +1,5 @@
 import { getRepository } from "typeorm";
-import Photo from "../../../entity/Photo";
-import Category from "../../../entity/Category";
-import Gender from "../../../entity/Gender";
+import { Gender, Category, Photo } from "../../../entity";
 
 class PhotoService {
   async createPhoto(newPhoto) {
