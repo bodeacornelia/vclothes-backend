@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 export const verifyJWTToken = function(token) {
   return new Promise((resolve, reject) => {
-    jwt.verify(token, process.env.APP_SECRET, (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err || !decodedToken) {
         return reject(err)
       }
@@ -30,7 +30,7 @@ export const createJWToken = function (details) {
 
   let token = jwt.sign({
     data: details.sessionData
-  }, process.env.APP_SECRET, {
+  }, process.env.JWT_SECRET, {
       expiresIn: details.maxAge,
       algorithm: 'HS256'
     })

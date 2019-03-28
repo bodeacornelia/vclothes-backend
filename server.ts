@@ -1,13 +1,10 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
-import * as dotenv from 'dotenv';
-import modules from '../src/modules';
-import { connection } from '../MysqlConnection';
+import modules from './src/modules';
+import { connection } from './MysqlConnection';
 
 const app = express();
-dotenv.config();
-
 const port = process.env.BACKEND_PORT
 
 // mysql ORM connection

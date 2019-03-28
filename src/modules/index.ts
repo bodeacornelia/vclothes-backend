@@ -1,9 +1,8 @@
-'use strict'
 import AuthProvider from '../packages/core/auth/AuthProvider';
-import auth from './auth';
-import user from './user';
-import photo from './photo';
-import appointment from './appointment';
+import { userRouter } from './user/router';
+import { authRouter } from './auth/router';
+import { photoRouter } from './photo/router';
+import { appointmentRouter } from './appointment/router';
 
 export default init;
 
@@ -16,6 +15,7 @@ function initAuthSystem() {
 }
 
 function init(app) {
+  
   const config = envConfig(process.env);
   const { apiUrl } = config;
   const authSystem = initAuthSystem();
@@ -23,10 +23,12 @@ function init(app) {
   app.set('apiBase', apiUrl);
   app.set('auth', authSystem);
 
-  auth(app);
-  user(app);
-  photo(app);
-  appointment(app);
+  const BASE_URL = app.get('apiBase');
+
+  app.use(BASE_URL, authRouter);
+  app.use(BASE_URL, userRouter);
+  app.use(BASE_URL, photoRouter);
+  app.use(BASE_URL, appointmentRouter);
 
   return app;
 }

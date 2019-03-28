@@ -2,7 +2,7 @@
 
 import { verifyJWTToken, createJWToken } from '../../../../libs/auth';
 import *as bcrypt from 'bcrypt';
-import UserService from '../../../modules/user/service/UserService'
+import { UserService } from '../../../modules/user/UserService';
 
 class UserIdentityService {
 
