@@ -1,5 +1,5 @@
 import * as express from 'express';
-import AppointmentController from './AppointmentController';
+import { AppointmentController } from './AppointmentController';
 const router = express.Router();
 
 const controller = new AppointmentController();

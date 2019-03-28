@@ -1,7 +1,7 @@
 import Controller from "../../system/Controller";
 import { PhotoService } from "./PhotoService";
 
-export default class PhotoController extends Controller {
+export class PhotoController extends Controller {
 
   constructor() {
     super();

@@ -1,9 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from "typeorm";
-import Category from "./Category";
-import Gender from "./Gender";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from 'typeorm';
+import { Category, Gender } from './';
 
 @Entity()
-export default class Photo extends BaseEntity {
+export class Photo extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;

@@ -1,4 +1,5 @@
-import AuthController from './AuthController';
+import { AuthController } from "./AuthController";
+
 var express = require('express');
 var router = express.Router();
 

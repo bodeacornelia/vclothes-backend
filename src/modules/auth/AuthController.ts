@@ -2,7 +2,7 @@ import * as bcrypt from 'bcrypt';
 import Controller from '../../system/Controller';
 import { UserService } from '../user/UserService';
 
-export default class AuthController extends Controller {
+export class AuthController extends Controller {
   constructor() {
     super();
   }

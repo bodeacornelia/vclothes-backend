@@ -3,24 +3,18 @@ import { userRouter } from './user/router';
 import { authRouter } from './auth/router';
 import { photoRouter } from './photo/router';
 import { appointmentRouter } from './appointment/router';
+import { config } from '../../config';
 
 export default init;
-
-const envConfig = (env) => ({
-  apiUrl: env.API_BASE
-});
 
 function initAuthSystem() {
   return AuthProvider();
 }
 
 function init(app) {
-  
-  const config = envConfig(process.env);
-  const { apiUrl } = config;
   const authSystem = initAuthSystem();
   
-  app.set('apiBase', apiUrl);
+  app.set('apiBase', config.API_BASE);
   app.set('auth', authSystem);
 
   const BASE_URL = app.get('apiBase');

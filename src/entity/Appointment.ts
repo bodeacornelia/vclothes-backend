@@ -1,10 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from "typeorm";
-import Category from "./Category";
-import User from "./User";
-import Status from "./Status";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from 'typeorm';
+import { Category, User, Status } from './';
 
 @Entity()
-export default class Appointment extends BaseEntity {
+export class Appointment extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;

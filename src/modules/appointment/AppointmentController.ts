@@ -1,7 +1,7 @@
 import Controller from "../../system/Controller";
 import { AppointmentService } from "./AppointmentService";
 
-export default class AppointmentController extends Controller {
+export class AppointmentController extends Controller {
 
   constructor() {
     super();

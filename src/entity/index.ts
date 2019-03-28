@@ -1,7 +1,7 @@
-export { default as User } from './User';
-export { default as Role } from './Role';
-export { default as Status } from './Status';
-export { default as Photo } from './Photo';
-export { default as Gender } from './Gender';
-export { default as Category } from './Category';
-export { default as Appointment } from './Appointment';
+export { User } from './User';
+export { Role } from './Role';
+export { Status } from './Status';
+export { Photo } from './Photo';
+export { Gender } from './Gender';
+export { Category } from './Category';
+export { Appointment } from './Appointment';

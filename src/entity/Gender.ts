@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
-import Photo from "./Photo";
+import { Photo } from "./Photo";
 
 @Entity()
-export default class Gender extends BaseEntity {
+export class Gender extends BaseEntity {
 
   @PrimaryGeneratedColumn()
   id: number;
