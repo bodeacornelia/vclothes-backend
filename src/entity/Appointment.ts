@@ -13,6 +13,9 @@ export class Appointment extends BaseEntity {
     @Column()
     hour: string;
 
+    @Column()
+    details: string;
+
     @ManyToOne(type => Category, category => category.photos)
     category: Category;
 

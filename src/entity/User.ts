@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from 'typeorm';
-import { Appointment, Role } from './';
+import { Role } from './Role';
+import { Appointment } from './Appointment';
 
 
 @Entity()
