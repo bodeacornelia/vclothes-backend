@@ -4,6 +4,9 @@ import * as bodyParser from 'body-parser';
 import modules from './src/modules';
 import { connection } from './MysqlConnection';
 import { config } from './config';
+import * as passport from 'passport';
+import BearerStrategyProvider from './src/packages/core/auth/strategies/BearerStrategyProvider';
+import LocalStrategyProvider from './src/packages/core/auth/strategies/LocalStrategyProvider';
 
 const app = express();
 const port = config.BACKEND_PORT;
@@ -12,6 +15,8 @@ const port = config.BACKEND_PORT;
 connection();
 
 app.use(cors());
+passport.use('local', LocalStrategyProvider());
+passport.use('bearer', BearerStrategyProvider());
 
 app.listen(port);
 console.log('VSecret RESTful API server started on: ' + port);

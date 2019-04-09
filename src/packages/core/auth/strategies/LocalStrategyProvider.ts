@@ -1,14 +1,12 @@
-'use strict'
 import { Strategy as LocalStrategy } from 'passport-local';
-import UserIdentityServiceProvider from '../../userIdentity/UserIdentityServiceProvider';
+import { AuthService } from '../../../../modules/auth/AuthService';
 
 export default LocalStrategyProvider;
 
 function LocalStrategyProvider() {
-  const userIdentityService = UserIdentityServiceProvider();
 
   return new LocalStrategy(function (username, password, done) {
-    userIdentityService.authenticateByCredentials(username, password, (err, result) => {
+    AuthService.authenticateByCredentials(username, password, (err, result) => {
       if (err) {
         return done(err);
       }

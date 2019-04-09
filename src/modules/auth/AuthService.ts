@@ -1,13 +1,11 @@
-'use strict'
+import * as bcrypt from 'bcrypt';
+import { UserService } from '../../modules/user/UserService';
+import { TokenService } from './TokenService';
 
-import { verifyJWTToken, createJWToken } from '../../../../libs/auth';
-import *as bcrypt from 'bcrypt';
-import { UserService } from '../../../modules/user/UserService';
-
-class UserIdentityService {
+class Service {
 
   authenticateByAccessToken(token, callback) {
-    verifyJWTToken(token).then(function (response: any) {
+    TokenService.verifyJWTToken(token).then(function (response: any) {
       let user = UserService.getUserById(response.data.id).then(() => callback(null, user));
     }).catch((err) => callback(err));
   }
@@ -26,7 +24,7 @@ class UserIdentityService {
 
       callback(null, {
         success: 'true',
-        token: createJWToken({
+        token: TokenService.createJWToken({
           sessionData: user,
           maxAge: 3600
         })
@@ -35,4 +33,7 @@ class UserIdentityService {
   }
 }
 
-export default UserIdentityService;
+const AuthService = new Service();
+Object.freeze(AuthService);
+
+export { AuthService };

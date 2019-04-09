@@ -1,4 +1,3 @@
-import AuthProvider from '../packages/core/auth/AuthProvider';
 import { userRouter } from './user/router';
 import { authRouter } from './auth/router';
 import { photoRouter } from './photo/router';
@@ -7,15 +6,9 @@ import { config } from '../../config';
 
 export default init;
 
-function initAuthSystem() {
-  return AuthProvider();
-}
-
 function init(app) {
-  const authSystem = initAuthSystem();
   
   app.set('apiBase', config.API_BASE);
-  app.set('auth', authSystem);
 
   const BASE_URL = app.get('apiBase');
 
