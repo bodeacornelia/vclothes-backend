@@ -7,11 +7,13 @@ const controller = new UserController();
 router.get('/users',
   controller.authenticate,
   controller.listAllUsers,
+  controller.reply
 );
 
 router.get('/user/:userId',
   controller.authenticate,
-  controller.getUserDetails
+  controller.getUserDetails,
+  controller.reply
 );
 
 export const userRouter = router;

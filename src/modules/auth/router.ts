@@ -8,11 +8,13 @@ var controller = new AuthController();
 router.post(
   '/login',
   controller.localAuthenticate,
-  controller.login
+  controller.login,
+  controller.reply
 )
 
 router.post('/users.add',
-  controller.createUser
+  controller.createUser,
+  controller.reply
 );
 
 export const authRouter = router;

@@ -1,7 +1,14 @@
 import { Gender, Category, Photo } from '../../entity';
+import { XErrorMissingFields } from '../../system/xerrors/XErrorMissingFields';
+import { isEmpty } from 'lodash';
 
 class Service {
   async createPhoto(newPhoto) {
+    if (isEmpty(newPhoto)) {
+      const error = new XErrorMissingFields('Photo details required');
+      throw error;
+    }
+
     const category = await Category.findOne({ category: newPhoto.category });
     const gender = await Gender.findOne({ gender: newPhoto.gender });
 

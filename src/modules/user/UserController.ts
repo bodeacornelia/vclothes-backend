@@ -1,18 +1,20 @@
-import { UserService } from "./UserService";
-import Controller from "../../system/Controller";
+import { UserService } from './UserService';
+import Controller from '../../system/Controller';
 
 export class UserController extends Controller {
   constructor() {
     super();
   }
 
-  async getUserDetails(req, res) {
+  async getUserDetails(req, res, next) {
     const user = await UserService.getUserById(req.params.userId);
-    res.json(user);
+    res.response = user;
+    next();
   };
 
-  async listAllUsers(req, res) {
+  async listAllUsers(req, res, next) {
     const userList = await UserService.getAllUsers();
-    res.json(userList);
+    res.response = userList;
+    next();
   }
 }

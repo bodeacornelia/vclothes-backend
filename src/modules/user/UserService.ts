@@ -1,4 +1,4 @@
-import { Role, User } from "../../entity";
+import { Role, User } from '../../entity';
 
 class Service {
   async createUser(newUser) {

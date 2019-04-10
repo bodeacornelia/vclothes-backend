@@ -1,15 +1,9 @@
 import * as bcrypt from 'bcrypt';
 import { UserService } from '../../modules/user/UserService';
 import { TokenService } from './TokenService';
+import { XErrorUnautorized } from '../../system/xerrors/XErrorUnautorized';
 
 class Service {
-
-  authenticateByAccessToken(token, callback) {
-    TokenService.verifyJWTToken(token).then(function (response: any) {
-      let user = UserService.getUserById(response.data.id).then(() => callback(null, user));
-    }).catch((err) => callback(err));
-  }
-
   async authenticateByCredentials(email, password, callback) {
     let user = await UserService.getUserByEmail({ email });
 
@@ -17,9 +11,9 @@ class Service {
       if (err) {
         callback(err);
       }
-
+      const error = new XErrorUnautorized('Wrong username or password');
       if (!result) {
-        callback(null, false);
+        callback(error);
       }
 
       callback(null, {

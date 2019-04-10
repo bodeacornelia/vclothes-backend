@@ -1,7 +1,13 @@
 import { Status, Appointment, User, Category } from '../../entity';
+import { isEmpty } from 'lodash';
+import { XErrorMissingFields } from '../../system/xerrors/XErrorMissingFields';
 
 class Service {
   async createAppointment(newAppointment) {
+    if (isEmpty(newAppointment)) {
+      const error = new XErrorMissingFields('Appointment details required');
+      throw error;
+    }
     const category = await Category.findOne(newAppointment.categoryId);
     const user = await User.findOne(newAppointment.userId);
     const status = await Status.findOne(newAppointment.statusId);
