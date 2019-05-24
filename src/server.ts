@@ -1,12 +1,12 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
-import modules from './src/modules';
+import modules from './modules';
 import { connection } from './MysqlConnection';
 import { config } from './config';
 import * as passport from 'passport';
-import LocalStrategyProvider from './src/packages/core/auth/strategies/LocalStrategyProvider';
-import { JWTStrategyProvider } from './src/packages/core/auth/strategies/JWTStrategyProvider';
+import LocalStrategyProvider from './packages/core/auth/strategies/LocalStrategyProvider';
+import { JWTStrategyProvider } from './packages/core/auth/strategies/JWTStrategyProvider';
 
 const app = express();
 const port = config.BACKEND_PORT;

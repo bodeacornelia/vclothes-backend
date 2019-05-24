@@ -11,5 +11,5 @@ Development - Steps to run this project:
 2. ignore - ignore some specific files
 3. watch - by default nodemon monitors the current working directory. 
 
-Commands needed in live backend conatiner
-2. npm run typeorm migration:run
+Commands needed after docker-compose up
+2. docker exec backend npm run migrate

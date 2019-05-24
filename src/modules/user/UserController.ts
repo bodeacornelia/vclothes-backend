@@ -6,15 +6,12 @@ export class UserController extends Controller {
     super();
   }
 
-  async getUserDetails(req, res, next) {
-    const user = await UserService.getUserById(req.params.userId);
-    res.response = user;
-    next();
+  async getUserDetails(req, res) {
+    return res.json(await UserService.getUserById(req.params.userId));
   };
 
-  async listAllUsers(req, res, next) {
+  async listAllUsers(req, res) {
     const userList = await UserService.getAllUsers();
-    res.response = userList;
-    next();
+    return res.json(userList);
   }
 }

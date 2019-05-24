@@ -2,10 +2,11 @@
   "name": "vclothes-backend",
   "version": "0.0.1",
   "description": "Awesome project developed with TypeORM.",
+  "main": "./build/server.js",
   "devDependencies": {
     "ts-node": "3.3.0",
     "@types/node": "^8.0.29",
-    "typescript": "2.5.2",
+    "typescript": "^3.3.0",
     "nodemon": "^1.18.4"
   },
   "dependencies": {
@@ -31,6 +32,11 @@
   },
   "scripts": {
     "start": "nodemon",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "build": "rm -rf build && tsc",
+    "prod": "node ./build/server.js",
+    "migrate": "npm run typeorm migration:run",
+    "revert-migration": "npm run typeorm migration:revert",
+    "generate-migration": "npm run typeorm migration:generate -- --name"
   }
 }

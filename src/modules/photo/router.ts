@@ -6,14 +6,12 @@ const controller = new PhotoController();
 
 router.get('/photos',
   controller.authenticate,
-  controller.listAllPhotos,
-  controller.reply
+  controller.listAllPhotos
 );
 
 router.post('/photos.add',
   controller.authenticate,
-  controller.addPhoto,
-  controller.reply
+  controller.addPhoto
 );
 
 export const photoRouter = router;

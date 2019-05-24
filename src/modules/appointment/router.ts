@@ -6,14 +6,12 @@ const controller = new AppointmentController();
 
 router.get('/appointments',
   controller.authenticate,
-  controller.listAllAppointments,
-  controller.reply
+  controller.listAllAppointments
 );
 
 router.post('/appointments.add',
   controller.authenticate,
-  controller.addAppointment,
-  controller.reply
+  controller.addAppointment
 );
 
 export const appointmentRouter = router;

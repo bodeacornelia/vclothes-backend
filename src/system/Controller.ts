@@ -7,18 +7,14 @@ class Controller {
   }
 
   authenticate(req, res, next) {
-    return passport.authenticate('jwt', { session: false }, (req, res, err) => {
-      if (err) {
+    return passport.authenticate('jwt', { session: false }, (notFoundUserErr, info, err) => {
+      if (err || notFoundUserErr) {
         const error = new XErrorUnautorized('Unauthorized');
         next(error);
       }
+      req.user = info;
       next();
     })(req, res, next);
-  }
-
-  reply(req, res, next) {
-    const response = res.response;
-    res.json(response);
   }
 }
 

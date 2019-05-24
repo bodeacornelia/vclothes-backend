@@ -3,7 +3,7 @@ import Controller from '../../system/Controller';
 import { UserService } from '../user/UserService';
 import { isEmpty } from 'lodash';
 import { XErrorMissingFields } from '../../system/xerrors/XErrorMissingFields';
-import { runInNewContext } from 'vm';
+import { ROLE } from '../../constants/AppConstants';
 
 export class AuthController extends Controller {
   constructor() {
@@ -12,8 +12,8 @@ export class AuthController extends Controller {
 
   createUser(req, res, next) {
     var newUser = req.body;
+    newUser.roleId = ROLE.USER;
     if (isEmpty(newUser)) {
-
       const error = new XErrorMissingFields('User details required');
       next(error);
     } else {
@@ -25,14 +25,12 @@ export class AuthController extends Controller {
         newUser.password = hash
         await UserService.createUser(newUser);
         const users = await UserService.getAllUsers();
-        res.response = users;
-        next();
+        return res.json(users);
       });
     }
   }
 
-  login(req, res, next) {
-    res.response = req.user;
-    return next();
+  login(req, res) {
+    return res.json(req.user);
   };
 }

@@ -2,7 +2,7 @@ import { userRouter } from './user/router';
 import { authRouter } from './auth/router';
 import { photoRouter } from './photo/router';
 import { appointmentRouter } from './appointment/router';
-import { config } from '../../config';
+import { config } from '../config';
 
 export default init;
 

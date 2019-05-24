@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import * as _ from 'lodash';
-import { config } from '../../../config';
+import { config } from '../../config';
 
 const TOKEN_DEFAUL_AGE = 3600;
 
@@ -28,7 +28,6 @@ class Service {
         expiresIn: details.maxAge,
         algorithm: 'HS256'
       })
-
     return token
   }
 

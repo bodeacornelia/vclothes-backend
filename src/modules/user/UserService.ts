@@ -15,11 +15,11 @@ class Service {
   }
 
   async getUserById(id) {
-    return User.findOne(id);
+    return User.findOneOrFail(id);
   }
 
   async getUserByEmail(email) {
-    return User.findOne(email);
+    return User.findOneOrFail(email);
   }
 }
 
