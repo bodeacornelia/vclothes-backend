@@ -7,6 +7,7 @@ import { config } from './config';
 import * as passport from 'passport';
 import LocalStrategyProvider from './packages/core/auth/strategies/LocalStrategyProvider';
 import { JWTStrategyProvider } from './packages/core/auth/strategies/JWTStrategyProvider';
+import { FacebookStrategyProvider } from './packages/core/auth/strategies/FacebookStrategyProvider';
 
 const app = express();
 const port = config.BACKEND_PORT;
@@ -14,9 +15,12 @@ const port = config.BACKEND_PORT;
 // mysql ORM connection
 connection();
 
-app.use(cors());
+app.use(cors({
+  allowedHeaders: 'Content-Type,Authorization'
+}));
 passport.use('local', LocalStrategyProvider());
 passport.use('jwt', JWTStrategyProvider());
+passport.use('facebook', FacebookStrategyProvider());
 
 app.listen(port);
 console.log('VSecret RESTful API server started on: ' + port);

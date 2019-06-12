@@ -11,6 +11,17 @@ router.post(
   controller.login,
 )
 
+router.get(
+  '/facebook-login',
+  controller.facebookAuthenticate,
+)
+
+router.get(
+  '/facebook-callback',
+  controller.facebookCallbackAuthenticate,
+  controller.login,
+)
+
 router.post('/users.add',
   controller.createUser,
 );

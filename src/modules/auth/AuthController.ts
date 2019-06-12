@@ -31,6 +31,7 @@ export class AuthController extends Controller {
   }
 
   login(req, res) {
+    console.log('Sunt aici ');
     return res.json(req.user);
   };
 }

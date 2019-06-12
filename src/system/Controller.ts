@@ -16,6 +16,14 @@ class Controller {
       next();
     })(req, res, next);
   }
+
+  facebookAuthenticate(req, res, next) {
+    return passport.authenticate('facebook')(req, res, next);
+  }
+
+  facebookCallbackAuthenticate(req, res, next) {
+    return passport.authenticate('facebook', { failureRedirect: '/login' })(req, res, next);
+  }
 }
 
 export default Controller;
