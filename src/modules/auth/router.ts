@@ -19,7 +19,10 @@ router.get(
 router.get(
   '/facebook-callback',
   controller.facebookCallbackAuthenticate,
-  controller.login,
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('http://localhost:3000/');
+  }
 )
 
 router.post('/users.add',

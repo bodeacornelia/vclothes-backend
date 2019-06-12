@@ -10,6 +10,6 @@ export function FacebookStrategyProvider() {
     console.log(accessToken);
     console.log(refreshToken);
     console.log(profile);
-    return done(null, profile);
+    return done(null, null, profile);
   });
 }

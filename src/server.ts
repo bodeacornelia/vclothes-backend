@@ -16,7 +16,8 @@ const port = config.BACKEND_PORT;
 connection();
 
 app.use(cors({
-  allowedHeaders: 'Content-Type,Authorization'
+  allowedHeaders: 'Content-Type,Authorization',
+  credentials: true
 }));
 passport.use('local', LocalStrategyProvider());
 passport.use('jwt', JWTStrategyProvider());

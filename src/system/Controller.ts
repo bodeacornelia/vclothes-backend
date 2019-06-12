@@ -22,7 +22,9 @@ class Controller {
   }
 
   facebookCallbackAuthenticate(req, res, next) {
-    return passport.authenticate('facebook', { failureRedirect: '/login' })(req, res, next);
+    return passport.authenticate('facebook', { 
+      failureRedirect: 'http://localhost:3000/',
+     })(req, res, next);
   }
 }
 
